@@ -1,0 +1,14 @@
+{
+    "name": "laivu/codeception-tutorial",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Lai Vu",
+            "email": "vuldh@nal.vn"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "codeception/codeception": "^2.4"
+    }
+}
