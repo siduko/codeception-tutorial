@@ -1,0 +1,12 @@
+actor: IntegrationTester
+modules:
+    enabled:
+        - \Helper\Integration
+        - Asserts
+        - Db:
+            dsn: 'mysql:host=mysql;dbname=codeception_tutorial'
+            user: 'root'
+            password: 'password'
+            populate: true
+            cleanup: true
+            reconnect: true

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: app.Dockerfile
+    working_dir: /var/www/html
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/apache_log:/var/log/apache2
+      - ./docker/sites-enabled:/etc/apache2/sites-enabled:ro
+    links:
+      - mysql
+      - selenium
+
+  mysql:
+    image: mysql:5.6
+    ports:
+      - "33061:3306"
+    volumes:
+      - ./docker/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: codeception_tutorial
+
+  selenium:
+    build:
+      context: ./docker
+      dockerfile: selenium.Dockerfile
+    ports:
+      - "44441:4444"
